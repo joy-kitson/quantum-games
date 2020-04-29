@@ -1,24 +1,34 @@
 #!/usr/bin/env python3
+import cmath
+
 from pd_base import *
 
 # An interface defining what a bot for our PD games needs to be able to do
 class Bot:
-    def get_strategy():
+    def get_strategy(self):
         pass
 
-    def process_results(counts, payoff, player_num):
+    def process_results(self, counts, payoff, player_num):
         pass
 
 class TitForTatBot(Bot):
-    def get_strategy():
-        pass
+    COOPERATE = create_strategy_matrix(0, 0)
+    DEFECT = create_strategy_matrix(cmath.pi, cmath.pi)
 
-    def process_results(counts, payoff, player_num):
+    def __init__(self):
+        self.next_move = COOPERATE
+
+    def get_strategy(self):
+        return self.next_move
+
+    def process_results(self, counts, payoff, player_num):
         pass
 
 class MiracleMoveBot(Bot):
-    def get_strategy():
-        pass
+    MIRACLE_MOVE = create_strategy_matrix(cmath.pi/2,cmath.pi/2)
+    
+    def get_strategy(self):
+        return MIRACLE_MOVE
 
-    def process_results(counts, payoff, player_num):
+    def process_results(self, counts, payoff, player_num):
         pass
