@@ -13,7 +13,7 @@ class Bot:
 
 class TitForTatBot(Bot):
     COOPERATE = create_strategy_matrix(0, 0)
-    DEFECT = create_strategy_matrix(cmath.pi, cmath.pi)
+    DEFECT = create_strategy_matrix(cmath.pi, 0)
 
     def __init__(self):
         self.next_move = TitForTatBot.COOPERATE
@@ -38,7 +38,7 @@ class TitForTatBot(Bot):
             self.next_move = TitForTatBot.COOPERATE
 
 class MiracleMoveBot(Bot):
-    MIRACLE_MOVE = create_strategy_matrix(cmath.pi/2,cmath.pi/2)
+    MIRACLE_MOVE = create_strategy_matrix(cmath.pi/2, -cmath.pi/2)
     
     def get_strategy(self):
         return MiracleMoveBot.MIRACLE_MOVE
