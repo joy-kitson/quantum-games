@@ -4,12 +4,6 @@
 from pd_base import *
 from bots import *
 
-# Loading your IBM Q account(s)
-provider = IBMQ.load_account()
-
-alice = MiracleMoveBot()
-bob = TitForTatBot()
-
 def run_iterated_game(\
         players,\
         payoff_matrices=[ALICE_PAY, BOB_PAY],\
@@ -33,4 +27,20 @@ def run_iterated_game(\
     
     return total_payoffs
 
-print(run_iterated_game([alice, bob]))
+def main():
+    # Loading your IBM Q account(s)
+    provider = IBMQ.load_account()
+
+    print('Alice is a MiracleMoveBot')
+    alice = MiracleMoveBot()
+
+    print('Bob is a TitForTatBot')
+    bob = TitForTatBot()
+
+    payoffs = run_iterated_game([alice, bob])
+
+    print("Alice's Payoff:", payoffs[0])
+    print("Bob's Payoff:", payoffs[1])
+
+if __name__ == '__main__':
+    main()
