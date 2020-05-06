@@ -8,7 +8,8 @@ def run_iterated_game(\
         players,\
         payoff_matrices=[ALICE_PAY, BOB_PAY],\
         num_rounds=10,\
-        gamma=.5):
+        gamma=.5,
+        shots=1):
     
     total_payoffs = [0 for p in players]
     
@@ -17,7 +18,7 @@ def run_iterated_game(\
                 players[0].get_strategy(),\
                 players[1].get_strategy(),\
                 gamma)
-        counts = run_circuit(circuit, shots=1000)
+        counts = run_circuit(circuit, shots=shots)
         
         for i in range(len(players)):
             payoff = get_payoff(counts, payoff_matrices[i])
@@ -37,7 +38,7 @@ def main():
     print('Bob is a TitForTatBot')
     bob = TitForTatBot()
 
-    payoffs = run_iterated_game([alice, bob])
+    payoffs = run_iterated_game([alice, bob], num_rounds=100, shots=1000)
 
     print("Alice's Payoff:", payoffs[0])
     print("Bob's Payoff:", payoffs[1])
