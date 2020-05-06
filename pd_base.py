@@ -33,8 +33,8 @@ def build_game_circuit(alice_strat, bob_strat, gamma):
     untangle = Operator(create_entangle_matrix(gamma).getH())
 
     circuit.append(entangle, [0, 1])
-    circuit.append(Operator(alice_strat, [0]))
-    circuit.append(Operator(bob_strat, [1]))
+    circuit.append(Operator(alice_strat), [0])
+    circuit.append(Operator(bob_strat), [1])
     circuit.append(untangle, [0, 1])
     circuit.measure([0, 1], [0, 1])
 
