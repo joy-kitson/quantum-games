@@ -3,6 +3,7 @@
 
 from pd_base import *
 from bots import *
+import sys
 
 def run_iterated_game(\
         players,\
@@ -29,6 +30,9 @@ def run_iterated_game(\
     return total_payoffs
 
 def main():
+    num_rounds = int(sys.argv[1])
+    shots = int(sys.argv[2])
+    
     # Loading your IBM Q account(s)
     provider = IBMQ.load_account()
 
@@ -38,7 +42,7 @@ def main():
     print('Bob is a TitForTatBot')
     bob = TitForTatBot()
 
-    payoffs = run_iterated_game([alice, bob], num_rounds=100, shots=1000)
+    payoffs = run_iterated_game([alice, bob], num_rounds=num_rounds, shots=shots)
 
     print("Alice's Payoff:", payoffs[0])
     print("Bob's Payoff:", payoffs[1])
