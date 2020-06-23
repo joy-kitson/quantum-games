@@ -27,7 +27,8 @@ def run_iterated_game(
         num_games=1,
         num_rounds=10,
         gamma=.5,
-        shots=1):
+        shots=1,
+        normalised=True):
     
     total_payoffs = [0 for p in init_players]
     
@@ -48,7 +49,11 @@ def run_iterated_game(
                 total_payoffs[i] += payoff
    
     # Average the results of the games
-    total_payoffs = [p / num_games for p in total_payoffs]
+    if normalised:
+        total_payoffs = [p / (num_games * num_rounds) for p in total_payoffs]
+
+    else:
+        total_payoffs = [p / num_games for p in total_payoffs]
 
     return total_payoffs
 
