@@ -15,6 +15,7 @@ def main():
         with open(bob_filename, 'w') as bob_file:
             # Add header for columns
             alice_file.write(',' + ','.join([str(2 ** n_pow) for n_pow in n_pows]) + '\n')
+            bob_file.write(',' + ','.join([str(2 ** n_pow) for n_pow in n_pows]) + '\n')
             
             num_games = 10
             for m_pow in m_pows:
