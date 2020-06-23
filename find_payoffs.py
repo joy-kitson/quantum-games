@@ -8,8 +8,8 @@ import os
 def main():
     alice_filename = 'alice_payoffs.csv'
     bob_filename = 'bob_payoffs.csv'
-    m_pows = range(4)
-    n_pows = range(5)
+    m_pows = range(9)
+    n_pows = range(9)
  
     with open(alice_filename, 'w') as alice_file:
         with open(bob_filename, 'w') as bob_file:
